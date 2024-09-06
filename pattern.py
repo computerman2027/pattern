@@ -265,6 +265,41 @@ def pattern19(h):
             print(" "*(h-i),end="")
             print("* "*i)
 
+def pattern20(h):
+#5555555555
+#5444444445
+#5433333345
+#5432222345
+#5432112345
+#5432112345
+#5432222345
+#5433333345
+#5444444445
+#5555555555
+    if h<1:
+        print("Invalid height")
+        return
+    lb=0
+    ub=(h*2)-1
+    for i in range(0,h*2):
+        for j in range(0,h*2):
+            if j>=lb and j<=ub:
+                if i<h:
+                    print((h-(i%h)),end="")
+                else:
+                    print((h-((h-1-i)%h)),end="")
+            elif j<lb:
+                print((h-(j%h)),end="")
+            elif j>ub:
+                print((h-((h-1-j)%h)),end="")
+        if i<h:
+            lb+=1
+            ub-=1
+        else:
+            lb-=1
+            ub+=1
+        print()   
+
 def execute(h):
     print("PATTERN 1:\n")
     pattern1(h)
@@ -306,6 +341,8 @@ def execute(h):
     pattern18(h)
     print("PATTERN 19:\n")
     pattern19(h)
+    print("PATTERN 20:\n")
+    pattern20(h)
 
 try:
     n=int(input("Enter height : "))
